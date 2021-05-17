@@ -1,0 +1,46 @@
+.Header {
+  display: flex;
+  flex-direction: column;
+  .Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    .Left {
+      .Text {
+        color: #5698c3;
+        font-weight: bold;
+        font-size: 15px;
+        padding: 0 8px;
+        min-width: 110px;
+      }
+    }
+  }
+  .Input_Title {
+    display: flex;
+    align-items: center;
+    background-color: #2376b7;
+    img {
+      width: 76px;
+    }
+    .Title {
+      padding: 4px 20px;
+      font-size: 18px;
+      min-width: 150px;
+      height: 30px;
+      line-height: 30px;
+      color: #81d8f7;
+    }
+    .Input {
+      width: 280px;
+    }
+  }
+  .Menu {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    background-color: #1976d2 !important;
+    color: #f5f5f5 !important;
+  }
+}
