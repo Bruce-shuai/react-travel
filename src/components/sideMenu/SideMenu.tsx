@@ -2,10 +2,10 @@ import React from 'react';
 import { sideMenuList } from './mock';
 import { Menu } from 'antd';
 import { GifOutlined } from '@ant-design/icons';
-import SubMenu from 'antd/lib/menu/SubMenu';
+import styles from './sideMenu.scss/SideMenu.module.css';
 
 export const SideMenu: React.FC = () => {
-  return <Menu mode='vertical'>
+  return <Menu mode='vertical' className={styles.menu}>
       {sideMenuList.map((item, index) => (
         <Menu.SubMenu
         // 感觉使用index，不是太好啊....
