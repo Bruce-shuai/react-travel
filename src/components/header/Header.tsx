@@ -3,12 +3,19 @@ import logo from '../../assets/logo.svg';
 import styles from './Header.scss/Header.module.css';
 import { GlobalOutlined } from '@ant-design/icons';   // icon图标库
 import { Layout, Typography, Input, Menu, Button, Dropdown } from 'antd';
+import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
+
 
 // React.FC 首先是React.FunctionComponent的类型别名
 // 然后React.FunctionComponent是封装的React函数类型定义
 // 这里其实也是使用了泛型
 // 记住TS中:后面的就是类型定义
 export const Header: React.FC = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const params = useParams();
+  const routeMatch = useRouteMatch();
+
   return <>
     <Layout className={styles.Header}>
        <div className={styles.Top}>
@@ -27,8 +34,9 @@ export const Header: React.FC = () => {
            </Dropdown.Button>
          </div>
          <Button.Group>
-           <Button>登录</Button>
-           <Button>注册</Button>
+           {/* 真好用 */}
+           <Button onClick={() => history.push('signIn')}>登录</Button>
+           <Button onClick={() => history.push('rigister')}>注册</Button>
          </Button.Group>
        </div>
        <div className={styles.Input_Title}>
