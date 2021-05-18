@@ -1,0 +1,8 @@
+.coImg {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.coImg img {
+  width: 200px;
+}

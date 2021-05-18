@@ -10,8 +10,8 @@ import { Image, Carousel as AntCarousel } from 'antd';
 // 这他么就是轮播图吧！
 export const Carousel: React.FC = () => {
   return <AntCarousel autoplay>
-    <Image src={img1} className={styles.img}/>
-    <Image src={img2} className={styles.img}/>
-    <Image src={img3} className={styles.img}/>
+    <Image src={img1} height='240px'/>
+    <Image src={img2} height='240px'/>
+    <Image src={img3} height='240px'/>
   </AntCarousel>
 }
