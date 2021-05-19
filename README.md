@@ -17,3 +17,7 @@ ant Design
 其实为了节省项目上线的体积。可把类型定义中放入 dev 开发依赖中
 
 > npm install @types/react-router-dom --save-dev
+
+搭建 redux 状态订阅系统
+
+> npm install redux
