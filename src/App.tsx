@@ -1,6 +1,8 @@
 import React from 'react';
 import { HomePage, SignInPage, RigisterPage, DetailPage } from './Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+
 function App() {
   return (
    <BrowserRouter>

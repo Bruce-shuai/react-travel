@@ -4,17 +4,29 @@ import styles from './Header.scss/Header.module.css';
 import { GlobalOutlined } from '@ant-design/icons';   // icon图标库
 import { Layout, Typography, Input, Menu, Button, Dropdown } from 'antd';
 import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
-
-
+// import { useSelector } from 'react-redux';   // 这个react-redux还没使用过啊...
+import { useTranslation, withTranslation } from 'react-i18next';
+import { useSelector } from '../../redux/hooks';
+import { useDispatch } from 'react-redux';
+// import { Dispatch } from 'redux';
 // React.FC 首先是React.FunctionComponent的类型别名
 // 然后React.FunctionComponent是封装的React函数类型定义
 // 这里其实也是使用了泛型
 // 记住TS中:后面的就是类型定义
 export const Header: React.FC = () => {
+  const {t} = useTranslation();
+
   const history = useHistory();
   const location = useLocation();
   const params = useParams();
   const routeMatch = useRouteMatch();
+  // const language = useSelector(state);
+
+  const language = useSelector((state) => state.language)
+  const languageList = useSelector((state) => state.languageList)
+  const dispatch = useDispatch();
+
+ const menuClickHandler = () => {}
 
   return <>
     <Layout className={styles.Header}>
@@ -24,9 +36,15 @@ export const Header: React.FC = () => {
            {/* 这个Dropdown 有点操作的呀。。 */}
            <Dropdown.Button
            overlay={
-             <Menu>
-               <Menu.Item>中文</Menu.Item>
-               <Menu.Item>English</Menu.Item>
+             <Menu onClick={menuClickHandler}>
+               {
+                 languageList.map((l) => {
+                   <Menu.Item>{l.name}</Menu.Item>
+                 })
+               }
+               {/* <Menu.Item>中文</Menu.Item>
+               <Menu.Item>English</Menu.Item> */}
+               <Menu.Item>添加新语言</Menu.Item>
              </Menu>}
            icon={<GlobalOutlined />}
            >
@@ -51,7 +69,7 @@ export const Header: React.FC = () => {
        </div>
        <Menu mode="horizontal" className={styles.Menu}>
          <Menu.Item key={1}>
-           旅游首页
+           {t("header.home_page")}
          </Menu.Item>
          <Menu.Item key={2}>
            周末游
