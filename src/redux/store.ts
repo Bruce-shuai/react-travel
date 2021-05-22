@@ -10,6 +10,8 @@ import recommendProductsReducer from './recommendProducts/recommendProductsReduc
 // reducer中详细记录了各种数据处理的过程
 
 import thunk from 'redux-thunk';
+import { actionLog } from './middlewares/actionLog';
+
 
 // 是一个对象   rootReducer 是一个约定俗成的名称，最好遵守，显得更专业
 const rootReducer = combineReducers({
@@ -17,7 +19,7 @@ const rootReducer = combineReducers({
   recommendProducts: recommendProductsReducer, 
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));
 
 // 这是一个什么神操作？！！
 // 类型的定义使用type关键字   类型的反向注入...??? 
