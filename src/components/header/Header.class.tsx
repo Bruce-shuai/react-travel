@@ -22,8 +22,8 @@ interface State {
 // 这里的state 是 store里面的state
 const mapStateToProps = (state: RootState) => {
   return { 
-    language: state.language,
-    languageList: state.languageList
+    language: state.language.language,
+    languageList: state.language.languageList
   }
 }
 

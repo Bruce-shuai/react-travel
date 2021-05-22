@@ -1,3 +1,15 @@
+这个项目的优点对于我个人而言有以下几点：
+
+- 文件的管理，神级导入，导出方法
+
+- TS 的一些神级操作:ReturnType & typeof type 的使用
+
+- 空数据处理方法 转菊花
+
+- RESTful 概念 MVC 概念 i18n 的使用
+
+- Postman 工具的基本使用
+
 需要安装的第三方模块有：
 
 > npm install typescript-plugin-css-modules --save-dev
@@ -39,5 +51,9 @@ react-redux 类型定义文件安装
 安装 Axios 框架：
 
 > npm install axios
+
+安装 Redux-thunk 中间件(自带 ts)
+
+> npm install redux-thunk
 
 后端数据有点崩...
