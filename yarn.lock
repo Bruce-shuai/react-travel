@@ -6047,10 +6047,10 @@
   "resolved" "https://registry.npmjs.org/human-signals/-/human-signals-1.1.1.tgz"
   "version" "1.1.1"
 
-"i18next@^20.2.4", "i18next@>= 19.0.0":
-  "integrity" "sha1-lyIg8Z3+8AdacIkNPosffPZMW9Y="
-  "resolved" "https://registry.nlark.com/i18next/download/i18next-20.2.4.tgz"
-  "version" "20.2.4"
+"i18next@^20.3.0", "i18next@>= 19.0.0":
+  "integrity" "sha1-lVi0MSQfsdu9RFF0OR7eZdCmjtk="
+  "resolved" "https://registry.nlark.com/i18next/download/i18next-20.3.0.tgz"
+  "version" "20.3.0"
   dependencies:
     "@babel/runtime" "^7.12.0"
 

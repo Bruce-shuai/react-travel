@@ -7,7 +7,6 @@ import sideImage2 from '../../assets/img/sider_2019_02-04.png';
 import sideImage3 from '../../assets/img/sider_2019_12-09.png';
 // 首字母小写  和  首字母大写是不一样的意思...
 import { withTranslation, WithTranslation } from 'react-i18next';
-import axios from 'axios';
 import { connect } from 'react-redux';
 // 这个RootState用得太巧妙而且显得专业了,逻辑上也显得很清晰~ 学！模仿！
 import { RootState } from '../../redux/store';
@@ -37,7 +36,7 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     giveMeFetch: () => {
-      dispatch(giveMeDataActionCreator());
+      return dispatch(giveMeDataActionCreator());
     }
     // fetchStart: () => {
     //   // 这里是函数执行
@@ -63,7 +62,6 @@ type PropsType = WithTranslation &
  ReturnType<typeof mapDispatchToProps>;
 
 class HomePageComponent extends React.Component<PropsType> {
-
   // constructor(props:any) {
   //   super(props)
   //   this.state = {
@@ -72,7 +70,6 @@ class HomePageComponent extends React.Component<PropsType> {
   //     productList: []
   //   }
   // }
-
 
   /* 这里用的是Promise...then... */
   // componentDidMount() {
@@ -120,7 +117,7 @@ class HomePageComponent extends React.Component<PropsType> {
     return (
        // style 模块化引用css
     <Layout>
-    <Header />
+    <Header/>
     {/* 显示主要的内容 */}
     {
       <div className={styles.content}>

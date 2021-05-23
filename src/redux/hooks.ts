@@ -1,5 +1,4 @@
-// 这里的用法很妙！但是还是要好好再思考思考为什么要这样来写
-
+// 这里的用法很妙！但还是有点没搞清楚为啥要这样做....？？？
 import { 
   useSelector as useReduxSelector,
   TypedUseSelectorHook 

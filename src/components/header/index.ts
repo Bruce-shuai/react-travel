@@ -1,1 +1,1 @@
-export *  from './Header.class'    // * 代表所有
+export *  from './Header'    // * 代表所有

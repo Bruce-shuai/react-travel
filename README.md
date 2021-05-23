@@ -38,7 +38,7 @@ react-i18next 配置 实现语言切换
 
 > npm install react-i18next i18next --save
 
-(注意：无论是 react-i18next 还是 i18next 都支持原生 ts，而不需要额外加 ts 的类型定义)
+(注意：无论是 react-i18next 还是 i18next 都支持原生 ts，而不需要额外加 ts 的类型声明)
 
 react-redux 安装
 
