@@ -14,7 +14,11 @@ interface MatchParams {
   touristRouteId: string;
 }
 // 这里的嵌套泛型真的要好好思考一下才行，艹
-export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = () => {
-  const { touristRouteId } = useParams<MatchParams>   // 这是一个什么用法？？
+// export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = () => {
+//   const { touristRouteId } = useParams<MatchParams>   // 这是一个什么用法？？
+//   return <></>
+// }
+
+export const DetailPage: React.FC<RouteComponentProps> = () => {
   return <></>
 }

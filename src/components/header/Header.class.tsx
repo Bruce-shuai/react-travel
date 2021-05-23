@@ -5,7 +5,7 @@ import { GlobalOutlined } from '@ant-design/icons';   // icon图标库
 import { Layout, Typography, Input, Menu, Button, Dropdown } from 'antd';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import store, {RootState} from '../../redux/store';
-import { StaticContext } from 'react-router';
+import { StaticContext } from 'react-router';   // 这个是什么鬼？
 import {changeLanguageActionCreator, addLanguageActionCreator} from '../../redux/language/languageActions';
 import { connect } from 'react-redux';
 import { WithTranslation } from 'react-i18next';
@@ -50,6 +50,8 @@ type PropsType = RouteComponentProps &  // react-router 路由props类型
  WithTranslation &  // i18n props类型
  ReturnType<typeof mapStateToProps> &   // redux store 映射类型
  ReturnType<typeof mapDispatchToProps>  // redux dispatch 映射类型
+
+
 class HeaderComponent extends React.Component<PropsType> {
  
 //  constructor(props: RouteComponentProps<{}, StaticContext, unknown> | Readonly<RouteComponentProps<{}, StaticContext, unknown>>) {
@@ -69,7 +71,6 @@ class HeaderComponent extends React.Component<PropsType> {
 //   //  });
 // }
 
-
 handleClick = (e: any) => {
   console.log('e', e);
   // 这里采用e还是挺好的
@@ -85,8 +86,8 @@ handleClick = (e: any) => {
 }
  
   render() {
-  const {history} =  this.props;
-     return <>
+    const {history} =  this.props;    // history是关于路由的~
+    return <>
     <Layout className={styles.Header}>
        <div className={styles.Top}>
          <div className={styles.Left}>
