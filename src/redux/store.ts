@@ -1,5 +1,5 @@
 // 这里的createStore是一个函数，我们通过这个函数来创建数据仓库store
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 // 这里的langulageReducer应该是自己命的名字，因为导出的时候是匿名函数
 import languageReducer from './language/languageReducer';
 // recommendProductsReducer这个也是自己命的名字
@@ -11,12 +11,15 @@ import recommendProductsReducer from './recommendProducts/recommendProductsReduc
 
 import thunk from 'redux-thunk';
 import { actionLog } from './middlewares/actionLog';
-
+// 兼容性极强
+import { ProductDetailSlice } from './productDetail/slice';
+import { combineReducers } from '@reduxjs/toolkit'
 
 // 是一个对象   rootReducer 是一个约定俗成的名称，最好遵守，显得更专业
 const rootReducer = combineReducers({
   language: languageReducer,
   recommendProducts: recommendProductsReducer, 
+  productDetail: ProductDetailSlice.reducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));

@@ -56,4 +56,6 @@ react-redux 类型定义文件安装
 
 > npm install redux-thunk
 
-后端数据有点崩...
+安装 redux-toolkit
+
+> npm install @reduxjs/toolkit

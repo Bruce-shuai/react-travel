@@ -9,7 +9,7 @@ interface PropsType {
     author: string;
     avatar: string;
     content: string;
-    createData: string;
+    createDate: string;
   }[];
 }
 
@@ -23,7 +23,7 @@ export const ProductComments: React.FC<PropsType> = ({data}) => {
           author={item.author}
           avatar={item.avatar}
           content={item.content}
-          datetime={item.createData}
+          datetime={item.createDate}
         />
       </li>
     }}

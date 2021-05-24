@@ -7,10 +7,16 @@ import { RouteComponentProps, useParams } from 'react-router-dom';
 //   match: RouteComponentProps
 // }
 import axios from 'axios';
-import { Spin, Row, Col, Divider, Typography } from 'antd';
+import { Spin, Row, Col, Divider, Typography, Anchor, Menu } from 'antd';
 import styles from './DetailPage.module.css'
-import { Header, Footer, ProductIntro } from '../../components';
+import { Header, Footer, ProductIntro, ProductComments } from '../../components';
 import { DatePicker, Space } from 'antd';
+import { commentMockData } from './mockup';
+import { ProductDetailSlice } from '../../redux/productDetail/slice';
+import { useSelector } from '../../redux/hooks';
+import { useDispatch } from 'react-redux';
+
+
 
 const { RangePicker } = DatePicker;
 
@@ -21,24 +27,28 @@ interface MatchParams {
 
 export const DetailPage: React.FC<RouteComponentProps> = () => {
   const { touristRouteId } = useParams<MatchParams>(); 
-  const [loading, setLoading] = useState<boolean>(true);
-  const [product, setProduct] = useState<any>(null); // 网络中获取的数据，所以使用any类型
-  const [error, setError] = useState<string | null>(null);
+  // const [loading, setLoading] = useState<boolean>(true);
+  // const [product, setProduct] = useState<any>(null); // 网络中获取的数据，所以使用any类型
+  // const [error, setError] = useState<string | null>(null);
+  
+  const loading = useSelector(state => state.productDetail.loading);
+  const error = useSelector(state => state.productDetail.error);
+  const product = useSelector(state => state.productDetail.data);
+  
+  const dispatch = useDispatch();
   // 似乎不能直接在useEffect旁写async
   useEffect(() => {
     const fetchData = async () => {
       // 这里是不需要返回值的
-      setLoading(true);
+      dispatch(ProductDetailSlice.actions.fetchStart());
       try {
         // data 应该就是响应主题
         const {data} = await axios.get(
           `http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`
         )
-        setProduct(data);
-        setLoading(false);
+      dispatch(ProductDetailSlice.actions.fetchSuccess(data));
       } catch(error) {
-        setError(error.message);
-        setLoading(false);
+        dispatch(ProductDetailSlice.actions.fetchFail(error.message))
       }
     }
     fetchData();   //函数定义函数调用都在这一个钩子里~
@@ -89,7 +99,22 @@ export const DetailPage: React.FC<RouteComponentProps> = () => {
         {/* 产品简介 与 日期选择 */}
         <div className={styles['product-intro-container']}></div>
         {/* 锚点菜单 */}
-        <div className={styles['product-detail-anchor']}></div>
+        <Anchor className={styles['product-detail-anchor']}>
+          <Menu mode='horizontal'>
+            <Menu.Item key='1'>
+              <Anchor.Link href='#feature' title='产品特色'></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key='2'>
+              <Anchor.Link href='#fees' title='费用'></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key='3'>
+              <Anchor.Link href='#notes' title='预定须知'></Anchor.Link>
+            </Menu.Item>
+            <Menu.Item key='4'>
+              <Anchor.Link href='#comments' title='用户评价'></Anchor.Link>
+            </Menu.Item>
+          </Menu>
+        </Anchor>
         {/* 产品特色 */}
         <div id='feature' className={styles['product-detail-container']}>
           <Divider orientation={'center'}>
@@ -125,6 +150,13 @@ export const DetailPage: React.FC<RouteComponentProps> = () => {
         </div>
         {/* 商品评价 */}
         <div id='comments' className={styles['product-detail-container']}>
+        <Divider orientation={'center'}>
+            <Typography.Title level={3}>用户评价</Typography.Title>
+          </Divider>
+          {/* react 为了防止注入攻击 */}
+          <div style={{margin: 40}}>
+            <ProductComments data={commentMockData} />
+          </div>
         </div>
       </div>
     <Footer />
