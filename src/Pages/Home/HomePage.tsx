@@ -17,12 +17,6 @@ import {
   giveMeDataActionCreator
 } from '../../redux/recommendProducts/recommendProductsAction';
 
-interface State {
-  loading: boolean,
-  error: string | null,
-  productList: any[]
-}
-
 // 这里的rootState 让 state的逻辑显示得非常的清晰！
 const mapStateToProps = (state: RootState) => {
   // 这里是一个返回值
@@ -51,10 +45,6 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
-// interface PropsType {
-//   loading: boolean,
-//   productList: any[]
-// }
 // 注意： 这里的export没有default
 // 我艹，这里的ReturnType的用法简直无敌！！ 这里的& 用法也新颖
 type PropsType = WithTranslation &
@@ -98,6 +88,7 @@ class HomePageComponent extends React.Component<PropsType> {
     // 思考一个问题： 下面两行放在render外，为什么会报错
     const {t, loading, error, productList} = this.props;
     // const { productList, loading, error } = this.state;
+    // 转菊花~
     if (loading) {
       return <Spin 
       size='large'
@@ -140,13 +131,13 @@ class HomePageComponent extends React.Component<PropsType> {
         // 我艹，这个用法有点特别！ type="warning" 显示的是黄色
           title={<Typography.Title level={3} type="danger">{t("home_page.new_arrival")}</Typography.Title>}
           sideImage={sideImage2}
-          products={productList[1].touristRoutes}
+          products={productList[0].touristRoutes}
         />
         <ProductCollection
         // 我艹，这个用法有点特别！ type="warning" 显示的是黄色
           title={<Typography.Title level={3} type="success">{t("home_page.domestic_travel")}</Typography.Title>}
           sideImage={sideImage3}
-          products={productList[2].touristRoutes}
+          products={productList[0].touristRoutes}
         />
          {/* ---------------------- */}
          {/* 合作企业组件 */}

@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import {RootState} from '../store';
+import { RootState } from '../store';
 import axios from 'axios';
 // 这里api的字符串使用全是大写，是什么个原理呢？
 // 正在调用推荐信息api
@@ -67,7 +67,9 @@ export const giveMeDataActionCreator = () : ThunkAction<
     dispatch(fetchRecommendProductStartActionCreator());
     try {
       // 注意 这里是http请求
-      const response = await axios.get("http://123.56.149.216:8080/api/shoppingCart");
+      const response = await axios.get(
+        "http://123.56.149.216:8080/api/productCollections"
+        );
       // this.setState({
       //   loading: false,
       //   error: null,
