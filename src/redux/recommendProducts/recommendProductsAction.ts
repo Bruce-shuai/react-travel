@@ -58,18 +58,19 @@ export const fetchRecommendProductFailActionCreator = (error:any): FatchRecommen
   }
 }
 
+// 返回的是一个函数  即action 变成一个函数了(ThunkAction)~   
 export const giveMeDataActionCreator = () : ThunkAction<
   void, 
   RootState, 
   unknown, 
-  RecommendProductsAction
+  RecommendProductsAction     // ThunkAction里面真正的action
 > => async (dispatch, getState) => {
     dispatch(fetchRecommendProductStartActionCreator());
     try {
       // 注意 这里是http请求
       const response = await axios.get(
         "http://123.56.149.216:8080/api/productCollections"
-        );
+      );
       // this.setState({
       //   loading: false,
       //   error: null,
