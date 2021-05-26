@@ -6,7 +6,7 @@ import styles from './DetailPage.module.css'
 import { Header, Footer, ProductIntro, ProductComments } from '../../components';
 import { DatePicker, Space } from 'antd';
 import { commentMockData } from './mockup';
-import { ProductDetailSlice } from '../../redux/productDetail/slice';
+import { ProductDetailSlice, getProductDetail } from '../../redux/productDetail/slice';
 import { useSelector } from '../../redux/hooks';
 import { useDispatch } from 'react-redux';
 
@@ -22,6 +22,7 @@ export const DetailPage: React.FC<RouteComponentProps> = () => {
   // 通过useParams来获取路由参数
   const { touristRouteId } = useParams<MatchParams>(); 
   
+  // 从store里获取数据   useSelector的用法其实还应该好好研究研究
   const loading = useSelector(state => state.productDetail.loading);
   const error = useSelector(state => state.productDetail.error);
   const product = useSelector(state => state.productDetail.data);
@@ -29,20 +30,11 @@ export const DetailPage: React.FC<RouteComponentProps> = () => {
   const dispatch = useDispatch();
   // 似乎不能直接在useEffect旁写async
   useEffect(() => {
-    const fetchData = async () => {
-      // 这里是不需要返回值的
-      dispatch(ProductDetailSlice.actions.fetchStart());
-      try {
-        // data 应该就是响应主题
-        const {data} = await axios.get(
-          `http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`
-        )
-      dispatch(ProductDetailSlice.actions.fetchSuccess(data));
-      } catch(error) {
-        dispatch(ProductDetailSlice.actions.fetchFail(error.message))
-      }
-    }
-    fetchData();   //函数定义函数调用都在这一个钩子里~
+    dispatch(getProductDetail(touristRouteId));
+    // const fetchData = async () => {
+
+    // }
+    // fetchData();   //函数定义函数调用都在这一个钩子里~
   }, []) 
   // 再来一个转菊花
   if (loading) {

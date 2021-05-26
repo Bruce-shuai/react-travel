@@ -13,7 +13,7 @@ import thunk from 'redux-thunk';
 import { actionLog } from './middlewares/actionLog';
 // 兼容性极强
 import { ProductDetailSlice } from './productDetail/slice';
-import { combineReducers } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 // 是一个对象   rootReducer 是一个约定俗成的名称，最好遵守，显得更专业
 const rootReducer = combineReducers({
@@ -22,12 +22,17 @@ const rootReducer = combineReducers({
   productDetail: ProductDetailSlice.reducer
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));
+// const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), actionLog],
+  devTools: true,
+})
 
 // 这是一个什么神操作？！！
 // 类型的定义使用type关键字来声明   类型的反向注入...??? 
 // 说实话，这里的RootState 用得是真的骚啊~   getState 也用得好~
 // 类型的反向注入，使用ReturnType 来从范型中获得他的返回类型
 export type RootState = ReturnType<typeof store.getState>
-
+ 
 export default store;
