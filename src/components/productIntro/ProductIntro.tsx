@@ -1,9 +1,7 @@
 import { Typography, Carousel, Image, Rate, Table } from 'antd';
 import React from 'react';
-// 如果取名为style的话很容易引起误会
 import styles from './ProductIntro.module.css';
 import { ColumnsType } from 'antd/es/table';
-
 
 interface PropsType {
   title: string;
@@ -16,9 +14,19 @@ interface PropsType {
   pictures: string[];
 }
 
-// 这个ColumnsType 可还要研究研究才行~
+// 每一行的内容
+interface RowType {
+  key: number;
+  title: string;
+  // 想想为什么要用JSX.Element
+  discription: string | number | JSX.Element;  // 这个JSX.Element 用法是真的骚啊~
+}
+
+// 这个ColumnsType到底是个啥？ 为什么里面还要加范型
 const columns: ColumnsType<RowType> = [
+  // 这里的title 和 description 有啥用呢？
   {
+    // 这个应该是左边的一列
     title: 'title',
     dataIndex: 'title',
     key: 'title',
@@ -26,19 +34,13 @@ const columns: ColumnsType<RowType> = [
     width: 120,
   },
   {
+    // 这个应该是右边的一列
     title: 'description',
     dataIndex: 'description',
     key: 'description',
     align: 'center',
   },
 ];
-
-interface RowType {
-  title: string;
-  // 想想为什么要用JSX.Element
-  discription: string | number | JSX.Element;  // 这个JSX.Element 用法是真的骚啊~
-  key: number;
-}
 
 export const ProductIntro: React.FC<PropsType> = ({
   title,
@@ -49,6 +51,8 @@ export const ProductIntro: React.FC<PropsType> = ({
   rating,
   pictures
 }) => {
+
+  
   // 似乎函数组件使用props的内容，不需要前缀props??
   const tableDataSource: RowType[] = [
     {
@@ -102,6 +106,8 @@ export const ProductIntro: React.FC<PropsType> = ({
       )
     }
   ]  
+
+
   return <div className={styles['intro-contaier']}>
     {/* 产品名称 */}
     <Typography.Title level={4}>{title}</Typography.Title>
@@ -121,12 +127,10 @@ export const ProductIntro: React.FC<PropsType> = ({
     {/* 走马灯，一次总共显示3张图片 */}
     <Carousel autoplay slidesToShow={3}>
       {
-        // pictures 是从哪儿来的？
         pictures.map(p => <Image height={150} src={p} />)
       }
     </Carousel>
-      {/* table表 */}
-    <Table<RowType> 
+    <Table
       columns={columns} 
       dataSource={tableDataSource} 
       size='small'

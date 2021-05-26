@@ -71,18 +71,9 @@ export const giveMeDataActionCreator = () : ThunkAction<
       const response = await axios.get(
         "http://123.56.149.216:8080/api/productCollections"
       );
-      // this.setState({
-      //   loading: false,
-      //   error: null,
-      //   productList: response.data,
-      // })
       dispatch(fetchRecommendProductSuccessActionCreator(response.data))
       // this.props.fetchSuccess(response.data)
     } catch (error) {
-      // this.setState({
-      //   error: error.message,
-      //   loading: false
-      // })
       // message 应该是error的一个属性，这个message 应该好好掌握掌握
       // this.props.fetchFail(error.message)
       dispatch(fetchRecommendProductFailActionCreator(error.message))

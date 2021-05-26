@@ -1,10 +1,9 @@
-import React, { Props } from 'react';
-import { Comment, Tooltip, List } from 'antd';
+import React from 'react';
+import { Comment, List, Tooltip } from 'antd';
 import styles from './ProductComments.module.css';
-import { link } from 'fs';
 
 interface PropsType {
-  // 这里的data 就是一个对象
+  // 这里把data的属性这些更改了~
   data: {
     author: string;
     avatar: string;
