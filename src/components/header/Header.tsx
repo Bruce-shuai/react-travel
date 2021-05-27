@@ -58,9 +58,9 @@ export const Header: React.FC = () => {
            </Dropdown.Button>
          </div>
          <Button.Group>
-           {/* 真好用 */}
-           <Button onClick={() => history.push('signIn')}>{t("header.signin")}</Button>
-           <Button onClick={() => history.push('rigister')}>{t("header.register")}</Button>
+           {/* 加上/ 表示绝对路径是啥意思呢？ */}
+           <Button onClick={() => history.push('/signIn')}>{t("header.signin")}</Button>
+           <Button onClick={() => history.push('/rigister')}>{t("header.register")}</Button>
          </Button.Group>
        </div>
        <div className={styles.Input_Title}>
@@ -71,6 +71,8 @@ export const Header: React.FC = () => {
         <Input.Search 
           placeholder='请输入旅游目的地、主题、或关键字'
           className={styles.Input}
+          // 这里的onSearch事件是固定的, 这特么什么玩法，没见过呀
+          onSearch={(keywords) => history.push('/search/' + keywords)}
         />
        </div>
        <Menu mode="horizontal" className={styles.Menu}>

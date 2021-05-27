@@ -6,3 +6,5 @@ export * from './productCollection';
 export * from './cooperative';
 export * from './productIntro';
 export * from './productComments';
+export * from './filter';
+export * from './productList';

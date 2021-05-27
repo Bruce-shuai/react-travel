@@ -16,6 +16,8 @@ import {
   // fetchRecommendProductFailActionCreator
   giveMeDataActionCreator
 } from '../../redux/recommendProducts/recommendProductsAction';
+import { MainLayout } from '../../layouts/mainLayout';
+
 
 // 这里的rootState 让 state的逻辑显示得非常的清晰！
 const mapStateToProps = (state: RootState) => {
@@ -107,8 +109,7 @@ class HomePageComponent extends React.Component<PropsType> {
     }
     return (
        // style 模块化引用css
-    <Layout>
-    <Header/>
+    <MainLayout>
     {/* 显示主要的内容 */}
     {
       <div className={styles.content}>
@@ -144,8 +145,7 @@ class HomePageComponent extends React.Component<PropsType> {
         <Cooperative />
       </div>
     }
-    <Footer />
-  </Layout>
+  </MainLayout>
     )
   }
 }

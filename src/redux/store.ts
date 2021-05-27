@@ -13,13 +13,15 @@ import thunk from 'redux-thunk';
 import { actionLog } from './middlewares/actionLog';
 // 兼容性极强
 import { ProductDetailSlice } from './productDetail/slice';
+import { ProductSearchSlice } from './productSearch/slice';
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
 // 是一个对象   rootReducer 是一个约定俗成的名称，最好遵守，显得更专业
 const rootReducer = combineReducers({
   language: languageReducer,
   recommendProducts: recommendProductsReducer, 
-  productDetail: ProductDetailSlice.reducer
+  productDetail: ProductDetailSlice.reducer,
+  productSearch: ProductSearchSlice.reducer,
 })
 
 // const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomePage, SignInPage, RigisterPage, DetailPage } from './Pages';
+import { HomePage, SignInPage, RigisterPage, DetailPage, SearchPage } from './Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
@@ -13,6 +13,8 @@ function App() {
     <Route path='/rigister' component={RigisterPage} />
     {/* 参数使用冒号来引导~ */}
     <Route path='/detail/:touristRouteId' component={DetailPage} />
+    {/* 这里的问号，代表参数是可选的。 keywords是关键词搜索~ */}
+    <Route path='/search/:keywords?' component={SearchPage} />
     <Route render={()=><div>404 not fount 页面去火星了!</div>} />
    </Switch>
   

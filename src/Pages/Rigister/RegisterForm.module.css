@@ -1,0 +1,6 @@
+.register-form {
+  width: 400px;
+  /* 下面的margin是让元素强制居中 */
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
