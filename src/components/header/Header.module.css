@@ -1,0 +1,58 @@
+.header-content {
+  display: flex;
+  margin-left: 150px;
+  margin-right: 150px;
+  background-color: white !important;
+}
+
+.header-firstLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: #93b5cf;
+}
+
+.header-secondLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.App-logo {
+  height: 60px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header-input {
+  margin-left: 20px;
+  /* 这里必须要加!important才行, 优先级最强 */
+  width: 280px !important;
+}
+
+.header-title {
+  font-size: 20px !important;
+  line-height: 40px !important;
+  text-align: center;
+}
+
+.header-menu {
+  margin-bottom: 10px !important;
+  background-color: #5698c3 !important;
+  color: #f5f5f5 !important;
+}
