@@ -2,34 +2,27 @@ import React from 'react';
 import { sideMenuList } from './mock';
 import { Menu } from 'antd';
 import { GifOutlined } from '@ant-design/icons';
-import styles from './sideMenu.scss/SideMenu.module.css';
+
+const { SubMenu } = Menu;
 
 export const SideMenu: React.FC = () => {
-  return <Menu mode='vertical' className={styles.menu}>
-      {sideMenuList.map((item, index) => (
-        <Menu.SubMenu
-        // 感觉使用index，不是太好啊....
-        // 注意： 组件<></...>或<.../>   没有<.></...>
-          key={`side-menu-${index}`}
-          title={<span><GifOutlined />{item.title}</span>}
-        >
-          {item.subMenu.map((sitem, sindex) => (
-            <Menu.SubMenu
-              key={`sub-menu-${sindex}`}
-              title={<span><GifOutlined />{sitem.title}</span>}
-            >
-            {sitem.subMenu.map((ssitem, ssindex) => (
-              <Menu.Item
-                key={`sub-sub-menu-${ssindex}`}
-              >
-                <span><GifOutlined />{ssitem}</span>
-              </Menu.Item>
-            ))}
-            </Menu.SubMenu>
-          ))}
-        </Menu.SubMenu>
+  return (
+    <Menu mode='vertical'>
+      {sideMenuList.map((sub, index) => (
+        <SubMenu key={`subMenu-${index}`} title={<span><GifOutlined />{sub.title}</span>}>
+        {
+          sideMenuList[index].subMenu.map((s, sindex) => {
+            return <SubMenu key={`sMenu-${sindex}`} title={s.title}>
+              {s.subMenu.map((ss, ssindex) => {
+                return <Menu.Item key={`ssMenu-${ssindex}`}>{ss}</Menu.Item>
+              })}
+            </SubMenu>
+          })
+        }
+        </SubMenu>
       ))}
-  </Menu>
+    </Menu>
+  )
 }
 
 

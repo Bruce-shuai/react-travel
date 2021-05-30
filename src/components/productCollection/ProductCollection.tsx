@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Divider, Row, Col } from 'antd';
 import { ProductImage } from './ProductImage' 
 
@@ -7,7 +6,7 @@ import { ProductImage } from './ProductImage'
 interface PropsType {
   title: JSX.Element;    // title 表示可以接受一个react组件，所以类型指定为JSX.element
   sideImage?: string;
-  products: any[];     // 只能这样搞，因为不知道后端要传些啥...
+  products: any[];       // 只能这样搞，因为不知道后端要传些啥...
 }
 export const ProductCollection: React.FC<PropsType> = ({title, sideImage, products}) => {
 // 牛逼，这个还自带颜色~
@@ -23,6 +22,7 @@ export const ProductCollection: React.FC<PropsType> = ({title, sideImage, produc
           {/* 大方块 */}
           <Col span={12}>
           {/* 这个组件就直接放在productCollection这个文件夹里 */}
+          {/* 这个size作为属性就很精彩！ */}
             <ProductImage 
               id={products[0].id}
               img={products[0].touristRoutePictures[0].url}

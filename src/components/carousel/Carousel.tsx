@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Carousel.scss/Carousel.module.css';
 // --------------这样是将图片的url传给img1--------------
 import img1 from '../../assets/img/carousel_1.jpg';
 import img2 from '../../assets/img/carousel_2.jpg';
@@ -10,6 +9,7 @@ import { Image, Carousel as AntCarousel } from 'antd';
 // 这他么就是轮播图吧！
 export const Carousel: React.FC = () => {
   return <AntCarousel autoplay>
+    {/* 图片的导入，如此的简单~ */}
     <Image src={img1} height='240px'/>
     <Image src={img2} height='240px'/>
     <Image src={img3} height='240px'/>
